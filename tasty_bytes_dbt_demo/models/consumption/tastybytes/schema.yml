@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: orders_secure_view
+    description: "Secure view exposing curated order transactions."
+  - name: customer_loyalty_metrics_secure_view
+    description: "Secure view for loyalty KPIs consumed by BI tools."
+  - name: sales_metrics_by_location_secure_view
+    description: "Secure view simplifying sales metrics per location."

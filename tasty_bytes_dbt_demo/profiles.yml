@@ -3,17 +3,19 @@ tasty_bytes:
   outputs:
     dev:
       type: snowflake
-      account: 'not needed'
-      user: 'not needed'
-      role: accountadmin
-      database: tasty_bytes_dbt_db
-      schema: dev
-      warehouse: tasty_bytes_dbt_wh
+      account: "{{ env_var('DEV_SNOWFLAKE_ACCOUNT', 'your_dev_account') }}"
+      user: "{{ env_var('DEV_SNOWFLAKE_USER', 'your_dev_user') }}"
+      password: "{{ env_var('DEV_SNOWFLAKE_PASSWORD', 'your_dev_password') }}"
+      role: DEV_PLATFORM_ROLE
+      database: DEV_RAW
+      schema: RAW
+      warehouse: DEV_TRANSFORM_WH
     prod:
       type: snowflake
-      account: 'not needed'
-      user: 'not needed'
-      role: accountadmin
-      database: tasty_bytes_dbt_db
-      schema: prod
-      warehouse: tasty_bytes_dbt_wh
+      account: "{{ env_var('PRD_SNOWFLAKE_ACCOUNT', 'your_prd_account') }}"
+      user: "{{ env_var('PRD_SNOWFLAKE_USER', 'your_prd_user') }}"
+      password: "{{ env_var('PRD_SNOWFLAKE_PASSWORD', 'your_prd_password') }}"
+      role: PRD_PLATFORM_ROLE
+      database: PRD_RAW
+      schema: RAW
+      warehouse: PRD_TRANSFORM_WH

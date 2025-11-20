@@ -31,16 +31,16 @@ SELECT
     oh.order_tax_amount,
     oh.order_discount_amount,
     oh.order_total
-FROM {{ ref('raw_pos_order_detail') }} od
-JOIN {{ ref('raw_pos_order_header') }} oh
+FROM {{ ref('standard_pos_order_detail') }} od
+JOIN {{ ref('standard_pos_order_header') }} oh
     ON od.order_id = oh.order_id
-JOIN {{ ref('raw_pos_truck') }} t
+JOIN {{ ref('standard_pos_truck') }} t
     ON oh.truck_id = t.truck_id
-JOIN {{ ref('raw_pos_menu') }} m
+JOIN {{ ref('standard_pos_menu') }} m
     ON od.menu_item_id = m.menu_item_id
-JOIN {{ ref('raw_pos_franchise') }} f
+JOIN {{ ref('standard_pos_franchise') }} f
     ON t.franchise_id = f.franchise_id
-JOIN {{ ref('raw_pos_location') }} l
+JOIN {{ ref('standard_pos_location') }} l
     ON oh.location_id = l.location_id
-LEFT JOIN {{ ref('raw_customer_customer_loyalty') }} cl
+LEFT JOIN {{ ref('standard_customer_loyalty') }} cl
     ON oh.customer_id = cl.customer_id

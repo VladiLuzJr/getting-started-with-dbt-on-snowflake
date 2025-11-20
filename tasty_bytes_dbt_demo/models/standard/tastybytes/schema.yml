@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: standard_pos_country
+    description: "Deduplicated country reference records."
+    columns:
+      - name: COUNTRY_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_franchise
+    description: "Latest record per franchise id."
+    columns:
+      - name: FRANCHISE_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_location
+    description: "Location dimension cleansed for downstream marts."
+    columns:
+      - name: LOCATION_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_menu
+    description: "Menu items standardized for modeling."
+    columns:
+      - name: MENU_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_order_detail
+    description: "Order line details with duplicates removed."
+    columns:
+      - name: ORDER_DETAIL_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_order_header
+    description: "Order headers reflecting the latest version per order id."
+    columns:
+      - name: ORDER_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_pos_truck
+    description: "Truck dimension standardized for analytics."
+    columns:
+      - name: TRUCK_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: standard_customer_loyalty
+    description: "Customer loyalty profile table with a single record per customer."
+    columns:
+      - name: CUSTOMER_ID
+        tests:
+          - not_null
+          - unique
