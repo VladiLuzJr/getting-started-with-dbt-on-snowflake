@@ -2,7 +2,7 @@ version: 2
 sources:
 - name: tb_101
   description: 'Point of Sale source data'
-  database: "{{ var('env_zone_databases').get(target.name, {}).get('raw', target.database) }}"
+  database: "{{ var('env_zone_databases', {}).get(target.name, {}).get('raw', target.database) }}"
   schema: RAW
   tables:
   - name: COUNTRY

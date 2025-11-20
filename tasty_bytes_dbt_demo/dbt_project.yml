@@ -49,34 +49,34 @@ vars:
 models:
   tasty_bytes:
     raw:
-      +database: "{{ var('env_zone_databases').get(target.name, {}).get('raw', target.database) }}"
-      +schema: "{{ var('env_zone_schemas').get('raw', target.schema) }}"
+      +database: "{{ var('env_zone_databases', {}).get(target.name, {}).get('raw', target.database) }}"
+      +schema: "{{ var('env_zone_schemas', {}).get('raw', target.schema) }}"
       +materialized: view
-      +snowflake_warehouse: "{{ var('env_zone_warehouses').get(target.name, {}).get('raw', target.warehouse | default('DEV_RAW_WH')) }}"
+      +snowflake_warehouse: "{{ var('env_zone_warehouses', {}).get(target.name, {}).get('raw', target.warehouse | default('DEV_RAW_WH')) }}"
       +tags: ['zone:raw']
       tastybytes:
         +tags: ['domain:tastybytes']
     standard:
-      +database: "{{ var('env_zone_databases').get(target.name, {}).get('standard', target.database) }}"
-      +schema: "{{ var('env_zone_schemas').get('standard', target.schema) }}"
+      +database: "{{ var('env_zone_databases', {}).get(target.name, {}).get('standard', target.database) }}"
+      +schema: "{{ var('env_zone_schemas', {}).get('standard', target.schema) }}"
       +materialized: table
-      +snowflake_warehouse: "{{ var('env_zone_warehouses').get(target.name, {}).get('standard', target.warehouse | default('DEV_STANDARD_WH')) }}"
+      +snowflake_warehouse: "{{ var('env_zone_warehouses', {}).get(target.name, {}).get('standard', target.warehouse | default('DEV_STANDARD_WH')) }}"
       +tags: ['zone:standard']
       tastybytes:
         +tags: ['domain:tastybytes']
     refined:
-      +database: "{{ var('env_zone_databases').get(target.name, {}).get('refined', target.database) }}"
-      +schema: "{{ var('env_zone_schemas').get('refined', target.schema) }}"
+      +database: "{{ var('env_zone_databases', {}).get(target.name, {}).get('refined', target.database) }}"
+      +schema: "{{ var('env_zone_schemas', {}).get('refined', target.schema) }}"
       +materialized: table
-      +snowflake_warehouse: "{{ var('env_zone_warehouses').get(target.name, {}).get('refined', target.warehouse | default('DEV_REFINED_WH')) }}"
+      +snowflake_warehouse: "{{ var('env_zone_warehouses', {}).get(target.name, {}).get('refined', target.warehouse | default('DEV_REFINED_WH')) }}"
       +tags: ['zone:refined']
       tastybytes:
         +tags: ['domain:tastybytes']
     consumption:
-      +database: "{{ var('env_zone_databases').get(target.name, {}).get('consumption', target.database) }}"
-      +schema: "{{ var('env_zone_schemas').get('consumption', target.schema) }}"
+      +database: "{{ var('env_zone_databases', {}).get(target.name, {}).get('consumption', target.database) }}"
+      +schema: "{{ var('env_zone_schemas', {}).get('consumption', target.schema) }}"
       +materialized: view
-      +snowflake_warehouse: "{{ var('env_zone_warehouses').get(target.name, {}).get('consumption', target.warehouse | default('DEV_CONSUMPTION_WH')) }}"
+      +snowflake_warehouse: "{{ var('env_zone_warehouses', {}).get(target.name, {}).get('consumption', target.warehouse | default('DEV_CONSUMPTION_WH')) }}"
       +secure: true
       +tags: ['zone:consumption']
       tastybytes:
